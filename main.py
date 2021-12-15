@@ -78,6 +78,8 @@ def doc2vec(filename, name):
     model.build_vocab(train_corpus)
     model.train(train_corpus, total_examples=model.corpus_count, epochs=model.epochs)
 
+    print(model.infer_vector(train_corpus[0][0]))
+
     vector = model.infer_vector(test_corpus[0])
     print("vector infer\n", vector)
     similar_doc = model.dv.most_similar(vector, topn=5)
